@@ -1,0 +1,14 @@
+#!/bin/sh
+set -e
+
+# first arg is `-f` or `--some-option`
+if [ "${1#-}" != "$1" ]; then
+	set -- php-fpm "$@"
+else
+
+	echo "Set custom php configurations"
+	envsubst < /docker/configurations/php/conf.d/app.ini > /usr/local/etc/php/conf.d/app.ini
+
+	exec "$@"
+
+fi
