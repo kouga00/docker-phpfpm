@@ -7,7 +7,7 @@ if [ "${1#-}" != "$1" ]; then
 else
 
 	echo "Set custom php configurations"
-	envsubst < /docker/configurations/php/conf.d/app.ini > /usr/local/etc/php/conf.d/app.ini
+	envsubst < /docker/config/conf.d/app.ini > /usr/local/etc/php/conf.d/app.ini
 
 	exec "$@"
 
